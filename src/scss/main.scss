@@ -1,13 +1,75 @@
 @import "~normalize.css";
 
 @import "_variables";
-@import "modules/hello.scss";
 
 body {
-  background: $wtf;
-  color: #fff;
+  background: var(--color-background);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  color: var(--color-text);
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  
+  em {
+    margin-left: 10px;
+    font-size: 1rem;
+
+    text-transform: uppercase;
+    font-family: var(--font);
+  }
+}
+
+.block__switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.block__switch input {
+  display:none;
+}
+
+.block__switch--slider {
+  background-color: var(--dark-button-color);
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.block__switch--slider:before {
+  background-color: var(--dark-switch);
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .block__switch--slider {
+  background-color: var(--light-button-color);
+}
+
+input:checked + .block__switch--slider:before {
+  transform: translateX(26px);
+  background-color: var(--light-switch);
+}
+
+.block__switch--slider.round {
+  border-radius: 34px;
+}
+
+.block__switch--slider.round:before {
+  border-radius: 50%;
 }
